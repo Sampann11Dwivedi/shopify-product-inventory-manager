@@ -1,0 +1,21 @@
+-- Schema for Product Inventory Manager
+
+CREATE TABLE IF NOT EXISTS shops (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  shop TEXT UNIQUE NOT NULL,
+  scope TEXT,
+  installed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  uninstalled_at DATETIME,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS webhook_logs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  shop TEXT NOT NULL,
+  topic TEXT NOT NULL,
+  webhook_id TEXT,
+  payload TEXT,
+  status TEXT DEFAULT 'success',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
